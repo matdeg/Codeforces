@@ -30,4 +30,16 @@ def decomp_naif(x):
                 tmp = tmp//pi
                 finished = False
     return decomp
+
+def power_mod(a,b,q):
+    if b == 1:
+        return a%q
+    if b%2==0:
+        return (power_mod(a, b//2, q)**2)%q
+    return (a * (power_mod(a, b//2, q)**2))%q
+
+def inv(x,q):
+    #return inverse of x modulo q if q is prime
+    return power_mod(x,q-2,q)
+
                 
